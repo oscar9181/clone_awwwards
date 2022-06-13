@@ -1,7 +1,10 @@
 
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
-
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .models import Site
+from .serializer import SiteSerializers
 
 
 def register(request):
@@ -30,3 +33,16 @@ def home (request):
 def portfolio (request):
     
     return render(request,'awwards/portfolio.html')
+
+def search(request):
+    return render(request,'awwards/search.html')
+
+
+@api_view(['GET'])
+def site(request):
+    if request.method=='GET':
+        my_site=Site.objects.all()
+        serializer=SiteSerializers(my_site,many=True)
+        
+        return Response(serializer.data)
+           
