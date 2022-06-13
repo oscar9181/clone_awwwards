@@ -1,18 +1,18 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 from django import forms
-from.models import Profile,User
+from.models import User
 
-class NewProfileForm(forms.ModelForm):
+# class NewProfileForm(forms.ModelForm):
     
-    title = forms.CharField()
-    date_posted = forms.DateTimeField()
-    image = forms.ImageField(required=True)
+#     title = forms.CharField()
+#     date_posted = forms.DateTimeField()
+#     image = forms.ImageField(required=True)
     
     
-    class Meta:
-        Model = Profile
-        fields =('title','bio','date_posted','author','image')
+#     class Meta:
+#         Model = Profile
+#         fields =('title','bio','date_posted','author','image')
         
 
 
