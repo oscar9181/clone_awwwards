@@ -2,15 +2,24 @@
 {% load static %}
 {% block content %}
 
+<style>
+body {
+    background-color: gray;
+}
+.media{
+    align-items: center;
+}
 
+
+</style>
 
 <div class="media">
     <div class='d-sm-flex'>
-    <img class="rounded-circle account-img" src="{{ user.picture.url }}" style="height: 50px;width: 50px;">
+    <img class="rounded-circle account-img" src="{{ user.picture.url }}" style="height: 30px;width: 30px;">
     <div class="media-body">
       <h2 class="profile-heading">{{ user.username }}</h2>
         <p class="text-secondary">{{ user.profile.bio }}</p>
-        
+
     </div>
   </div>
   </div>
