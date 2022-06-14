@@ -10,7 +10,7 @@ from .serializer import SiteSerializers
 from urllib import request
 import json
 from .forms import CreateUserForm
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 
 
 def register(request):
@@ -94,4 +94,6 @@ def addPost(request):
     return render (request,'awwards/AddPost.html')
 
 
-
+def logoutUser(request):
+    logout(request)
+    return redirect('login')

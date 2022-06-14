@@ -7,7 +7,9 @@ body {
     background-color: gray;
 }
 .media{
-    align-items: center;
+    
+    text-align: center;
+    padding: 10%;
 }
 
 
@@ -15,7 +17,7 @@ body {
 
 <div class="media">
     <div class='d-sm-flex'>
-    <img class="rounded-circle account-img" src="{{ user.picture.url }}" style="height: 30px;width: 30px;">
+    <img  src="{{ user.profile.picture.url }}" style="height: 180px;width: 180px;">
     <div class="media-body">
       <h2 class="profile-heading">{{ user.username }}</h2>
         <p class="text-secondary">{{ user.profile.bio }}</p>
