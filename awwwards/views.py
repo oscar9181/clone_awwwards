@@ -1,14 +1,18 @@
+from dataclasses import dataclass
+from unicodedata import name
 from urllib import response
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Site,Profile
+from .models import Site
 from .serializer import SiteSerializers
 from urllib import request
 import json
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login
+
+
 def register(request):
     form=CreateUserForm()
     
@@ -60,9 +64,12 @@ def profile(req):
 
 def search(request):
     
+    if request.method == 'POST':
+        search=request.POST.get('search')
+        if search:
+            data=Site.objects.filter(name__incontains=search)
+            return render(request, 'awwards/search.html',  {'data':data})
     
-    return render(request,'awwards/search.html')
-
 
 @api_view(['GET'])
 def site(request):
@@ -73,3 +80,18 @@ def site(request):
         return Response(serializer.data)
     
     
+def addPost(request):
+    if  request.method=='POST':
+        
+        image = request.FILES['image']
+        name=request.POST.get('name')
+        url=request.POST.get('url')
+        
+
+        new_post = Site.objects.create(name=name, url=url, posted_by=request.user, image=image,)
+        new_post.save()
+        return redirect('home')
+    return render (request,'awwards/AddPost.html')
+
+
+

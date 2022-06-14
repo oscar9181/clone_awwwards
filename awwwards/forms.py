@@ -6,13 +6,13 @@ from.models import User
 # class NewProfileForm(forms.ModelForm):
     
 #     title = forms.CharField()
-#     date_posted = forms.DateTimeField()
-#     image = forms.ImageField(required=True)
+#     bio = forms.Textarea()
+#     picture = forms.ImageField(required=True)
     
     
 #     class Meta:
 #         Model = Profile
-#         fields =('title','bio','date_posted','author','image')
+#         fields =('picture','bio','author')
         
 
 
