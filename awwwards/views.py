@@ -1,11 +1,13 @@
 
+from urllib import response
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Site,Profile
 from .serializer import SiteSerializers
-
+from urllib import request
+import json
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login
 def register(request):
@@ -34,11 +36,16 @@ def loginpage(request):
     return render(request,'awwards/login.html')
 
 
-def home (request):
+def home (req):
+    url='http://127.0.0.1:8000/site/'
+    response=request.urlopen(url)
+    results=response.read()
+    data=json.loads(results)
     
-    return render(request,'awwards/home.html')
+    
+    return render(req,'awwards/home.html',{'data':data})
 
-def profile(request):
+def profile(req):
     # if request.method == 'POST':
     #     title = request.POST.get('title')
     #     image = request.FILES['image']
@@ -47,12 +54,14 @@ def profile(request):
         
         
         # my_profile = Profile.objects.all()
-        return render(request, 'awwards/profile.html')
+        return render(req, 'awwards/profile.html')
         
         
         
 
 def search(request):
+    
+    
     return render(request,'awwards/search.html')
 
 
@@ -63,4 +72,5 @@ def site(request):
         serializer=SiteSerializers(my_site,many=True)
         
         return Response(serializer.data)
-           
+    
+    

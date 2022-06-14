@@ -1,10 +1,17 @@
 {% extends 'awwards/home.html' %}
 {% load static %}
 {% block content %}
-<form method="POST" action="">
 
-<img src="{{user.profile.image.url}}" alt="">
-<p>{{user.username}}</p>
 
-</form>
+
+<div class="media">
+    <div class='d-sm-flex'>
+    <img class="rounded-circle account-img" src="{{ user.picture.url }}" style="height: 50px;width: 50px;">
+    <div class="media-body">
+      <h2 class="profile-heading">{{ user.username }}</h2>
+        <p class="text-secondary">{{ user.profile.bio }}</p>
+        
+    </div>
+  </div>
+  </div>
 {% endblock content %}

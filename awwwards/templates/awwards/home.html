@@ -46,13 +46,22 @@
           </div>
         </div>
       </nav>
-      <div class="card">  
-          
-        
+      
+     
+    {% block content %}
+    {% for d in data %}
+<div class="row">
+   <div class="card">  
+      <img src="{{ d.image }}">
 
+      
 
+  </div>
+</div>
+    {% endfor %}
 
-      </div>
-    {% block content %}{% endblock content %}
+    
+    
+    {% endblock content %}
 </body>
 </html>

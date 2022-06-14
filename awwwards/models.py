@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     bio = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE) 
-    image = models.ImageField(default='default.jpg',null=False, blank=False)
+    picture = models.ImageField(null=True, blank=True,upload_to='images')
 
 
     def __str__(self):
@@ -16,4 +16,3 @@ class Site(models.Model):
     url= models.URLField()
     image = models.ImageField(null=False,blank=False)
     date_posted = models.DateTimeField(default=timezone.now)
-    
