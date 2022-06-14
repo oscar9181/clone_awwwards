@@ -63,11 +63,11 @@ def profile(req):
         
 
 def search(request):
-    
-    if request.method == 'POST':
+    if request.method == 'GET':
         search=request.POST.get('search')
-        if search:
-            data=Site.objects.filter(name__incontains=search)
+        if search != None:
+            data=Site.objects.filter(name__icontains=search)
+            
             return render(request, 'awwards/search.html',  {'data':data})
     
 
