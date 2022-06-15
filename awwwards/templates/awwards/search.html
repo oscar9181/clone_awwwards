@@ -8,13 +8,16 @@
       {% for d in data %}
         <div class="card" style="width: 26rem;">
           
-          <img src="{{ d.image }}" class="card-img-top" alt="...">
+          <img src="{{ d.image.url }}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ d.name }}</h5>
             <p class="card-text">{{ d.date_posted }}</p>
             <a href="#" class="btn btn-primary">View details</a>
           </div>
         </div>
+        <div>
+        <a href="{% url 'home' %}" class="btn btn-dark m-3">Previous Page</a>
+       </div>
         {% endfor %}
 
         {% endblock content %}

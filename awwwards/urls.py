@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout/',views.logoutUser,name='logout'),
     path('AddPost/',views.addPost,name='AddPost'),
     path('site/',views.site,name='site'),
-    path('search/',views.search,name='search')
+    path('search/',views.search,name='search'),
+    # path('display',views.viewPicture,name='image'),
     
 ]

@@ -11,6 +11,8 @@ from urllib import request
 import json
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login,logout
+from django.db.models import Q
+
 
 
 def register(request):
@@ -64,8 +66,8 @@ def profile(req):
 
 def search(request):
     if request.method == 'GET':
-        search=request.POST.get('search')
-        if search != None:
+        search=request.GET.get('search')
+        if search:
             data=Site.objects.filter(name__icontains=search)
             
             return render(request, 'awwards/search.html',  {'data':data})
@@ -97,3 +99,8 @@ def addPost(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+# def viewPicture(request):
+#     picture = Site.objects.get('display')
+#     return render(request,'awwards/display.html',{'picture' : picture})
+

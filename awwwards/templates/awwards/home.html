@@ -15,7 +15,7 @@
 
     <style>
         body{
-            color: black;
+            color: rgb(12, 0, 124);
         }
     </style>
     
@@ -29,23 +29,41 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          {% if user.is_authenticated %}
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+            
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'AddPost' %}">Add Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'site' %}">Site</a>
+              </li>
+
+              {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"href="{% url 'register' %}">Register</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-              
+
             </ul>
-            <form class="d-flex">
+            {% endif %}
+            <form class="d-flex" method="GET" action="{% url 'search'%}">
+              {% csrf_token %}
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-              method="GET"   name="search"  action="{% url 'search'%}">
+                name="search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
