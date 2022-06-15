@@ -1,3 +1,10 @@
+## Awwards Oscar app
+
+### Developer: Oscar Okola
+
+## Description
+Django is an application where a user can add post and api keys and also view their profile 
+
 
 ## User stories
   ##### As a user:
