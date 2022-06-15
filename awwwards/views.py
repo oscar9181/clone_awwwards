@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-from unicodedata import name
 from urllib import response
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -11,7 +9,7 @@ from urllib import request
 import json
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login,logout
-from django.db.models import Q
+
 
 
 
@@ -23,7 +21,7 @@ def register(request):
          if form.is_valid():
              form.save()
              
-        
+         return redirect('login')
 
     context ={'form':form}
     return render(request,'awwards/register.html',context)
