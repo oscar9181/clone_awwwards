@@ -16,15 +16,28 @@
     <style>
         body{
             color: rgb(12, 0, 124);
+            background-color:grey;
         }
+        ul{
+          margin-left: 700px;
+           display: flex;
+           justify-content: flex-end;
+          font-family: 'Exo 2', sans-serif;
+          
+         
+        }
+      
+        
     </style>
     
     
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="nav">
         <div class="container-fluid">
+          
           <a class="navbar-brand" href="{% url 'home' %}">Home</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,11 +47,6 @@
            
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-            
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-              
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'profile' %}">Profile</a>
               </li>
@@ -49,6 +57,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'site' %}">Site</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              
 
               {% else %}
               <li class="nav-item">
@@ -58,6 +70,8 @@
                 <a class="nav-link"href="{% url 'register' %}">Register</a>
               </li>
 
+
+              
             </ul>
             {% endif %}
             <form class="d-flex" method="GET" action="{% url 'search'%}">
@@ -67,21 +81,27 @@
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
+         </div>
         </div>
       </nav>
       
     {% block content %}
     
 <div class="container-fluid">
-<div class="row" style="display:flex;flex-wrap:wrap">
+
+  <strong>Sites of the day</strong>
+  
+<div class="row px-5" style="display:flex;flex-wrap:wrap">
   {% for d in data %}
-    <div class="card" style="width: 26rem;">
+    <div class="card" style="width: 24rem;">
       
       <img src="{{ d.image }}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ d.name }}</h5>
         <p class="card-text">{{ d.date_posted }}</p>
         <a href="#" class="btn btn-primary">View details</a>
+        <br>
+        <br>
       </div>
     </div>
     {% endfor %}
