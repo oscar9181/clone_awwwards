@@ -9,6 +9,8 @@ from urllib import request
 import json
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -38,7 +40,7 @@ def loginpage(request):
    
     return render(request,'awwards/login.html')
 
-
+@login_required(login_url='login')
 def home (req):
     url='http://127.0.0.1:8000/site/'
     response=request.urlopen(url)
