@@ -1,4 +1,14 @@
 
+## User stories
+  ##### As a user:
+        
+   +  View posted projects and their details
+   +  Post a project to be rated/reviewed
+   +  Rate/ review other users' projects
+   +  Search for projects 
+   +  View projects overall score
+   +  View my profile page
+
 
 ## Installation
 * Clone the repository Create a virtual environment Install Django and other requirements in my requirements.txt file in your repository folder Run the IP address on the browser
